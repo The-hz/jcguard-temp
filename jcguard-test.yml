@@ -1,0 +1,24 @@
+input:  /home/z/my-project/scripts/hello.jar
+output: /home/z/my-project/scripts/hello-protected.jar
+verbose: true
+phases:
+  stringEncryption: true
+  numberEncryption: true
+  controlFlow: true
+  rename: false             # 单类 jar 改名会跑不起来
+  debugStrip: true
+  lineNumberRandomize: true
+  watermark: true
+  flowDensity: 4
+  opaquePredicates: true
+  numberMode: SHIFTADD
+  stringStrength: MEDIUM
+  keepMainClass: true
+filter:
+  include: ["**"]
+  exclude: ["java/**", "javax/**", "io/jcguard/runtime/**"]
+watermark:
+  enabled: true
+  id: test-001
+  label: smoke-test
+  author: JCGuard
