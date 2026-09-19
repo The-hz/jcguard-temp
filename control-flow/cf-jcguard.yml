@@ -1,0 +1,29 @@
+input:  /home/z/my-project/scripts/cfdemo.jar
+output: /home/z/my-project/scripts/cfdemo-protected.jar
+verbose: true
+phases:
+  stringEncryption: true
+  numberEncryption: true
+  controlFlow: true
+  rename: false
+  debugStrip: true
+  lineNumberRandomize: true
+  watermark: true
+
+  flowDensity: 8            # 提高密度
+  opaquePredicates: true
+  numberMode: POLYNOMIAL    # 用更复杂的数字编码
+  stringStrength: STRONG
+
+  # 额外开几个让控制流更混乱
+  deadCodeInject: true
+  fakeInstructions: true
+  keepMainClass: true
+filter:
+  include: ["**"]
+  exclude: ["java/**", "javax/**", "io/jcguard/runtime/**"]
+watermark:
+  enabled: true
+  id: cf-test-001
+  label: control-flow-smoke
+  author: JCGuard
